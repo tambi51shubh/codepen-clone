@@ -18,21 +18,27 @@ const CodeEditor = ({
     onChanged
 }) => {
     const [fullscreen, setFullscreen] = useState(false);
-    const changeFullscreen = () => {
+    const [dropDown, setDropDown] = useState(true);
+
+    const changeViewSetting = () => {
+        if (window.innerWidth <= 600) {
+            setDropDown((prevDropDown) => !prevDropDown);
+            return;
+        }
         setFullscreen((prevScreen) => !prevScreen);
     }
     const handleChanged = (editor, data, value) => {
         onChanged(value);
     }
-
+ 
   return (
-    <div className='box-container' style={{ backgroundColor: viewMode.backgroundColor, color: viewMode.color, borderTop: `1px solid ${viewMode.editorBackground}`, width: fullscreen ? '90vw' : '33vw' }}>
+    <div className='box-container' style={{ backgroundColor: viewMode.backgroundColor, color: viewMode.color, borderTop: `1px solid ${viewMode.editorBackground}`, width: fullscreen && '90vw' }}>
         <div className='box-title'>
             <div className='box-title-name' style={{ backgroundColor: viewMode.editorBackground, color: viewMode.color }}>
                 {renderIcon}
                 {displayName}
             </div>
-            <Button onClick={changeFullscreen}>
+            <Button onClick={changeViewSetting}>
                 {
                     fullscreen ?
                     <ChevronLeftIcon style={{ backgroundColor: viewMode.backgroundColor, color: viewMode.color }}/>

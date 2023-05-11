@@ -17,7 +17,7 @@ function App() {
 
   return (
     <DataProvider>
-      <Header onModeChanged={modeChanged} viewMode={viewMode} darkMode={darkMode}/>
+      <Header onModeChanged={modeChanged} viewMode={viewMode} darkMode={darkMode} />
       <CodeEditorContainer viewMode={viewMode} />
       <Result viewMode={viewMode} />
     </DataProvider>
