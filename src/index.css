@@ -4,12 +4,14 @@ body {
 .editor-container {
   display: flex;
   width: 100%;
+  height: 45vh;
 }
 .box-container {
   display: flex;
   flex-direction: column;
   padding: 0 10px 20px 10px;
-  /* overflow: hidden; */
+  height: calc(100% - 30px);
+  width: 33vw;
 }
 .box-title {
   display: flex;
@@ -36,15 +38,34 @@ body {
   box-sizing: border-box !important;
   border-right: none !important;
 }
+.code-mirror-textarea {
+  height: calc(100% - 20px);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
 .CodeMirror-vscrollbar {
   display: none !important;
 }
 .CodeMirror-hscrollbar {
   display: none !important;
 }
-.code-mirror-textarea {
-  height: 45vh;
+.CodeMirror-cursor {
+  border-left: 2px solid brown !important;
+  height: 20px !important
 }
 .results-wrapper {
   height: 45vh;
+}
+
+@media screen and (max-width: 800px) {
+  .editor-container {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+  }
+  .box-container {
+    border: 0;
+    width: calc(100% - 20px);
+    height: calc(100% - 30px);
+  }
 }
