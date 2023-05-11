@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { DataContext } from '../context/DataProvider';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 
 const Result = (c) => {
-    const [loading, setLoading] = useState(false);
-    const { html, css, js, src, setSrc } = useContext(DataContext);
+    const { html, css, js, src, setSrc, loading, setLoading } = useContext(DataContext);
     const srcCode = `
     <html>
         <body>${html}</body>

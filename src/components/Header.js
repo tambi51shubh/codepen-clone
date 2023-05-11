@@ -19,7 +19,7 @@ const Header = ({viewMode, onModeChanged, darkMode }) => {
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState(false);
   const [loginProps, setLoginProps] = useState({});
-  const { username, login, setLogin, setUsername, src, saveSrc } = useContext(DataContext);
+  const { username, login, setLogin, setUsername, saveSrc, projectTitle } = useContext(DataContext);
   const handleClose = () => {
     setOpen(false);
     setProjects(false);
@@ -58,6 +58,7 @@ const Header = ({viewMode, onModeChanged, darkMode }) => {
       console.log(error);
     });
   }
+   
   return (
     <Box sx={{ flexGrow: 1 }}>
         <AppBar position="sticky" style={{ backgroundColor: viewMode.backgroundColor, color: viewMode.color, height: '52px' }}>
@@ -72,7 +73,7 @@ const Header = ({viewMode, onModeChanged, darkMode }) => {
             {username && `${username}'s Den!` || "Coder's Den"}
             </Typography>
             <Typography variant="h5" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
-            {login && saveSrc.length && saveSrc[saveSrc.length - 1].projectName || ""}
+            {login && projectTitle || ""}
             </Typography>
             <Button variant='contained' sx={{ marginRight: '20px', background: 'hsl(227.3684210526deg 12.2580645161% 30.3921568627%)' }} onClick={checkUserActivity}>
             {login ? 'Sign Out' : 'Log In'}

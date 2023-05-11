@@ -10,16 +10,20 @@ import { DataContext } from '../context/DataProvider';
 import { Typography } from '@mui/material';
 
 const ViewProjects = ({ open, handleClose }) => {
-  const { saveSrc, setSrc, setHtml, setCss, setJs } = useContext(DataContext);
+  const { saveSrc, setSrc, setHtml, setCss, setJs, setLoading, setProjectTitle } = useContext(DataContext);
 
   const handleFindProject = (id) => {
+    setLoading(true);
+    handleClose();
     const findSrc = saveSrc.find((src) => id === src.id);
-    console.log(findSrc);
+    setProjectTitle(findSrc.projectName);
     setHtml(findSrc.savedHtml);
     setJs(findSrc.savedJs);
     setCss(findSrc.savedCss);
-    setSrc(findSrc.savedSrcCode);
-    handleClose();
+    setTimeout(() => {
+      setLoading(false);
+      setSrc(findSrc.savedSrcCode);
+    }, 1500)
   }
 
   const list = () => (

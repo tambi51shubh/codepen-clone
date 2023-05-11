@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { DataContext } from '../context/DataProvider';
 
 const SaveProject = ({ open, handleClose }) => {
-    const { src, setSaveSrc, saveSrc, html, js, css } = useContext(DataContext);
+    const { src, setSaveSrc, saveSrc, html, js, css, setProjectTitle } = useContext(DataContext);
     const [projectName, setProjectName] = useState('');
 
     const handleSave = () => {
@@ -24,6 +24,7 @@ const SaveProject = ({ open, handleClose }) => {
                 savedSrcCode: src
             }
         ])
+        setProjectTitle(projectName);
         handleClose();
     }
 

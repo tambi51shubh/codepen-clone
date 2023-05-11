@@ -12,6 +12,8 @@ const DataProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [src, setSrc] = useState('');
   const [saveSrc, setSaveSrc] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [projectTitle, setProjectTitle] = useState('');
 
   return (
     <DataContext.Provider
@@ -33,7 +35,11 @@ const DataProvider = ({ children }) => {
         src,
         setSrc,
         saveSrc,
-        setSaveSrc
+        setSaveSrc,
+        loading,
+        setLoading,
+        projectTitle,
+        setProjectTitle
       }}
     >
       {children}
